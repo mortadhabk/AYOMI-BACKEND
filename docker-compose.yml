@@ -1,0 +1,44 @@
+version: '3.7'
+
+services:
+  db:
+    image: postgres:12
+    container_name: db
+    environment:
+      POSTGRES_USER: 'admin@admin.com'
+      POSTGRES_PASSWORD: 'admin'
+      POSTGRES_DB: 'test_db'
+    volumes:
+      - drf_pg_volume:/var/lib/postgresql/data
+    networks:
+      - socle_proxypass_network
+
+  adminer:
+    image: adminer:4.7.7
+    container_name: adminer
+    restart: always
+    ports:
+      - "8080:8080"
+    depends_on:
+      - db
+    networks:
+      - socle_proxypass_network
+      
+  backend:
+    container_name: backend
+    build: .
+    restart: always
+    ports:
+      - "80:80"
+    depends_on:
+      - db
+    networks:
+      - socle_proxypass_network
+
+volumes:
+  drf_pg_volume:
+
+networks:
+  socle_proxypass_network:
+    external:
+      name: proxypass_network

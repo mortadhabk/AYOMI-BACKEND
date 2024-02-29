@@ -1,0 +1,14 @@
+Run Project with docker : 
+docker network create proxypass_network 
+docker-compose up -d  
+
+Database Configuration :
+dbname="test_db",
+user="admin@admin.com",
+password="admin",
+host="db",
+port="5432"
+
+Test API :
+export CSV : GET http://localhost/export/csv 
+NPI Api : POST http://localhost/calculate/
