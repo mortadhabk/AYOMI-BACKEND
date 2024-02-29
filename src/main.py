@@ -6,10 +6,10 @@ from fastapi.middleware.cors import CORSMiddleware
 import csv
 from fastapi.responses import FileResponse
 
-# Initialize FastAPI app
+# init fastapi
 app = FastAPI()
 
-# Add CORS middleware to the FastAPI app	
+# ajoute de CORS middleware 
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
@@ -45,8 +45,6 @@ with conn.cursor() as cursor:
 class Calculation(BaseModel):
     expression: str
    
-
-
 
 # defenir les routes
 @app.post("/calculate/")

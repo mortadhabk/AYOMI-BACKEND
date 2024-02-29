@@ -1,3 +1,4 @@
+
 Run Project with docker : 
 docker network create proxypass_network 
 docker-compose up -d  
@@ -12,3 +13,9 @@ port="5432"
 Test API :
 export CSV : GET http://localhost/export/csv 
 NPI Api : POST http://localhost/calculate/
+body 
+{
+    "expression": "3 6 * 2 *"
+}
+
+#pour info j'ai pas pris en compte la partie validation et test (J'ai pas eu le temps de le faire)
